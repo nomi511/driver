@@ -1,0 +1,43 @@
+{
+  "expo": {
+    "name": "driver",
+    "slug": "driver",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "icon": "./assets/icon.png",
+    "userInterfaceStyle": "light",
+    "splash": {
+      "image": "./assets/splash.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#ffffff"
+    },
+    "updates": {
+      "fallbackToCacheTimeout": 0
+    },
+    "assetBundlePatterns": [
+      "**/*"
+    ],
+    "ios": {
+      "bundleIdentifier": "com.bespoke.adoncarz",
+      "supportsTablet": true,
+      "config": {
+        "googleMapsApiKey": "AIzaSyCRbrRcl9QRG2bPuqV--x-2KZbk43VBYug"
+      }
+    },
+    "android": {
+      "package": "com.bespoke.adoncarz",
+      "adaptiveIcon": {
+        "foregroundImage": "./assets/adaptive-icon.png",
+        "backgroundColor": "#FFFFFF"
+      }
+    },
+    "web": {
+      "favicon": "./assets/favicon.png"
+    },
+    "extra": {
+      "eas": {
+        "projectId": "87833f84-c7dc-4237-bbf7-62039f8af8db"
+      }
+    }
+  }
+}
