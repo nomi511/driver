@@ -18,6 +18,7 @@ const User = {
     total_income: 32000,
     total_distance: 147,
     total_distance_today: 28,
+    verified:true,
 
     hasAd: true,
     ad_detail:{
@@ -49,6 +50,7 @@ const Campaign = {
     title:"Coca Cola",
     duration: 1,
     location: "F10, Islamabad",
+    geojsonData:{},
     ad_image: img,
     logo: cola,
     type: "partial",

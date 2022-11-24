@@ -1,16 +1,20 @@
-import React from 'react'
+import React, {useEffect} from 'react'
 import { View, Text, StyleSheet, TouchableOpacity } from 'react-native'
 import Ionicons from '@expo/vector-icons/Ionicons'
 import { useNavigation } from '@react-navigation/core'
+import {COLORS} from '../assets/styles/colors'
 
 const HomeHeader = () => {
 
     const navigation = useNavigation()
 
+
     return (
         <View style={styles.container}>
             <View>
-                <Text style={styles.txt}>Adon<Text style={styles.innerTxt}>Carz</Text></Text>
+                <Text style={styles.txt}>Adon
+                    <Text style={styles.innerTxt}>Carz</Text>
+                </Text>
             </View>
             
             <TouchableOpacity style={styles.profile} onPress={()=>navigation.navigate('Profile')}>

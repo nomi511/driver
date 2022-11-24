@@ -2,12 +2,17 @@ import React from 'react'
 import { View, Text, StyleSheet, TouchableOpacity } from 'react-native'
 import { useNavigation } from '@react-navigation/core'
 
-const Button = ({title, bgColor, titleColor, onClick}) => {
+const Button = ({title, bgColor, titleColor, onClick, callback}) => {
 
     const navigation = useNavigation()
 
     return (
-        <TouchableOpacity style={[styles.container,{backgroundColor:bgColor}]} onPress={()=>navigation.navigate(onClick)}>
+        <TouchableOpacity style={[styles.container,{backgroundColor:bgColor}]} onPress={()=>{
+            navigation.navigate(onClick)
+            if(callback){
+                callback()
+            }
+        }}>
             <Text style={{color: titleColor, fontSize: 20, fontWeight:'bold'}}>{title}</Text>
         </TouchableOpacity>
     )

@@ -205,10 +205,10 @@ const styles=StyleSheet.create({
         width: '94%',
         height: 330,
         marginVertical: 15,
-        backgroundColor: COLORS.white,
         borderWidth: 3,
         borderRadius: 20,
-        borderColor: COLORS.white
+        borderColor: COLORS.white,
+        overflow:'hidden'
     },
     mapStyle:{
         width: '100%',

@@ -4,8 +4,12 @@ import {COLORS} from '../assets/styles/colors'
 import {User} from '../assets/data/data'
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome'
 import {faDollarSign} from '@fortawesome/free-solid-svg-icons/faDollarSign'
+import { faCircleInfo } from '@fortawesome/free-solid-svg-icons'
+import { faLock } from '@fortawesome/free-solid-svg-icons'
+import { faArrowRightFromBracket } from '@fortawesome/free-solid-svg-icons'
 import { geojsonData } from '../assets/data/data'
 import { isInsidePolygon, isInsideCircle } from 'geofencer'
+import { useNavigation } from '@react-navigation/core'
 
 const Profile = () => {
 
@@ -47,14 +51,25 @@ const Profile = () => {
             ]
         ]
     let check = isInsidePolygon(poly,mypoint)
-    console.log("\n\n\n\t is it inside the polygon??\n\t"+check+"\n\n")
+    //console.log("\n\n\n\t is it inside the polygon??\n\t"+check+"\n\n")
 
+
+
+
+
+
+
+    const navigation = useNavigation()
 
     return (
         <View style={styles.container}>
             <View style={styles.profileImg}>
                 <Image source={User.image} style={{width: '100%', height: '100%', borderRadius: 100}} resizeMode='cover' />
             </View>
+
+            <TouchableOpacity style={styles.editBtn} onPress={()=>{navigation.navigate('Edit Profile')}}>
+                <Text style={{color:COLORS.blue, fontWeight: 'bold'}}>Edit</Text>
+            </TouchableOpacity>
 
             <View style={styles.userDetail}>
                 <Text style={styles.title}>{User.name}</Text>
@@ -74,22 +89,37 @@ const Profile = () => {
                 </View>
             </View>
 
-            <TouchableOpacity style={styles.btns}>
-                <View>
-                    <FontAwesomeIcon icon={faDollarSign} />
+            <View style={styles.priceView}>
+                <View style={styles.btntitle}>
+                    <FontAwesomeIcon icon={faDollarSign} size={20} style={{color: COLORS.black}} />
+                    <Text style={styles.titleStyle}>Total Earnings</Text>
+                </View>
+                <View style={styles.prc}>
+                    <Text style={{marginTop:2, color: COLORS.black, fontWeight: '600'}}>Rs. </Text>
+                    <Text style={styles.prcStyle}>8000</Text>
+                </View>
+                
+            </View>
+
+            <TouchableOpacity style={styles.btns} onPress={()=>{navigation.navigate('Help')}} >
+                <View style={styles.btnStyle}>
+                    <FontAwesomeIcon icon={faCircleInfo} size={20} style={{color: COLORS.black}} />
+                    <Text style={styles.titleStyle}>Help</Text>
                 </View>
             </TouchableOpacity>
 
-            <TouchableOpacity style={styles.btns}>
-
+            <TouchableOpacity style={styles.btns} onPress={()=>{navigation.navigate('Forgot Password')}} >
+                <View style={styles.btnStyle}> 
+                    <FontAwesomeIcon icon={faLock} size={20} style={{color: COLORS.black}} />
+                    <Text style={styles.titleStyle}>Change password</Text>
+                </View>
             </TouchableOpacity>
 
-            <TouchableOpacity style={styles.btns}>
-
-            </TouchableOpacity>
-
-            <TouchableOpacity style={styles.btns}>
-
+            <TouchableOpacity style={styles.btns} >
+                <View style={styles.btnStyle}>
+                    <FontAwesomeIcon icon={faArrowRightFromBracket} size={20} style={{color: COLORS.black}} />
+                    <Text style={styles.titleStyle}>Log Out</Text>
+                </View>
             </TouchableOpacity>
 
         </View>
@@ -141,12 +171,55 @@ const styles=StyleSheet.create({
         fontSize: 14,
         color: COLORS.black
     },
+    priceView:{
+        width:'94%',
+        height: 50,
+        backgroundColor: COLORS.white,
+        borderRadius: 50,
+        marginTop: 15,
+        flexDirection: 'row',
+        alignSelf: 'center',
+        justifyContent: 'space-around',
+        alignItems: 'center'
+    },
+    btntitle:{
+        width: '35%',
+        marginLeft: -10,
+        flexDirection: 'row',
+    },
+    prc:{
+        flexDirection: 'row'
+    },
+    prcStyle:{
+        fontSize:16,
+        color: COLORS.blue
+    },
+    titleStyle:{
+        fontSize: 16,
+        color: COLORS.black,
+        marginLeft: 20
+    },
     btns:{
         width:'94%',
         height: 50,
         backgroundColor: COLORS.white,
         borderRadius: 50,
-        marginTop: 15
+        marginTop: 15,
+    },
+    btnStyle:{
+        flexDirection: 'row',
+        height: '100%',
+        alignItems: 'center',
+        marginLeft: '10%'
+    },
+    editBtn:{
+        position: 'absolute',
+        top: 15,
+        right: 20,
+        backgroundColor: COLORS.white,
+        paddingHorizontal: 15,
+        paddingVertical: 7,
+        borderRadius: 20
     }
 })
 

@@ -152,7 +152,8 @@ const styles=StyleSheet.create({
         borderWidth: 3,
         borderColor: COLORS.white,
         borderRadius: 20,
-        marginBottom: 15
+        marginBottom: 15,
+        overflow:'hidden'
     },
     mapStyle:{
         width: '100%',

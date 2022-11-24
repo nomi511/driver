@@ -162,6 +162,12 @@ const Home = () => {
                         provider='google'
                         style={styles.mapStyle}
                         initialRegion={region}
+                        region={region?region:{
+                            latitude: 33.6907,
+                            longitude: 73.0057,
+                            latitudeDelta: 0.003, 
+                            longitudeDelta: 0.003
+                        }}
                         showsUserLocation={true}
                     />
 
@@ -250,7 +256,6 @@ const styles = StyleSheet.create({
         marginVertical: 15,
         borderWidth: 3,
         borderColor: COLORS.white,
-        backgroundColor: COLORS.white,
         justifyContent: 'center',
         alignItems: 'center',
         borderRadius: 20,
