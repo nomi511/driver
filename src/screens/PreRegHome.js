@@ -4,9 +4,41 @@ import {COLORS, COLROS} from '../assets/styles/colors'
 import Button from '../components/button'
 import { useSelector } from 'react-redux'
 
+import { getLocalStorage } from '../helpers/localStorage'
+import { useNavigation } from '@react-navigation/native'
+import AsyncStorage from '@react-native-async-storage/async-storage'
+import authNav from '../navigation/authNav'
+import { useDispatch } from 'react-redux'
+import { tokenReset } from '../redux/userSlice'
+
 const PreRegHome = () => {
 
-    const user = useSelector(state=>state.user)
+    const reduxData = useSelector(state=>state.user)
+console.log(reduxData)
+    const navigation = useNavigation()
+
+    // const clearStorage = async()=>{
+    //     try {
+    //         await AsyncStorage.clear()
+    //     } catch (error) {
+    //         console.log(error)
+    //     }
+    // }
+    // clearStorage()
+
+    const getValue = async()=>{
+        const val = await getLocalStorage('userinfo')
+        if(!val){
+            navigation.reset({
+                index: 0,
+                routes:[{name: 'Auth Nav'}]
+            })
+        }
+    }
+    getValue()
+
+    const dispatch= useDispatch();
+    dispatch(tokenReset())
 
     return (
         <View style={styles.container}>
@@ -14,7 +46,7 @@ const PreRegHome = () => {
             
             <Text style={styles.wlcm}>WELCOME!</Text>
 
-            { ( user.number == null && user.address == '' && user.city =='')? (
+            { !reduxData.user? (
             
                 <View style={styles.beforeUpload}>
                     

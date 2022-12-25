@@ -4,9 +4,11 @@ import {COLORS} from '../assets/styles/colors'
 import Button from '../components/button'
 
 const Auth = () => {
+
+
     return (
         <View style={styles.container}>
-            <Text style={styles.logo}>Adon<Text style={{color: COLORS.blue}}>Carz</Text></Text>
+            <Text style={styles.logo}>Adsn<Text style={{color: COLORS.blue}}>Cars</Text></Text>
             <View style={styles.btnsView}>
                 <Button title='Sign In'  bgColor={COLORS.blue} titleColor={COLORS.white} onClick='Login'/>
             </View>

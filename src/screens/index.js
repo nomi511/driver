@@ -12,6 +12,7 @@ import EditProfile from './editProfile'
 import HelpForm from './helpForm'
 import ChangePassword from './changePassword'
 import NewPassword from './newPassword'
+import EmailVerification from "./emailVerification";
 
 
 
@@ -29,5 +30,6 @@ export {
     EditProfile,
     HelpForm,
     ChangePassword,
-    NewPassword
+    NewPassword,
+    EmailVerification
 }

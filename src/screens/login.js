@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useState} from 'react'
 import { View, Text, TextInput, StyleSheet, TouchableOpacity } from 'react-native'
 import { COLORS } from '../assets/styles/colors'
 import { useNavigation } from '@react-navigation/core'
@@ -9,6 +9,12 @@ import { verified } from '../redux/userSlice'
 const Login = () => {
 
     const navigation = useNavigation()
+
+    const [User, setUser] = useState({
+        email:'',
+        password:''
+    })
+    console.log(User)
 
     // redux
     const dispatch = useDispatch()
@@ -31,10 +37,14 @@ const Login = () => {
                 <TextInput 
                     placeholder='Email or username' 
                     style={styles.input}
+                    value={User.email}
+                    onChangeText={(txt)=>setUser({...User, email: txt})}
                 />
                 <TextInput 
                     placeholder='Password'
                     style={styles.input}
+                    value={User.password}
+                    onChangeText={(txt)=>setUser({...User, password: txt})}
                 />
 
                 <TouchableOpacity onPress={()=>{navigation.navigate('Forgot Password')}}>

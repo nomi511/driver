@@ -8,10 +8,7 @@ const Button = ({title, bgColor, titleColor, onClick, callback}) => {
 
     return (
         <TouchableOpacity style={[styles.container,{backgroundColor:bgColor}]} onPress={()=>{
-            navigation.navigate(onClick)
-            if(callback){
-                callback()
-            }
+            return (onClick? (navigation.navigate(onClick)):(callback()))
         }}>
             <Text style={{color: titleColor, fontSize: 20, fontWeight:'bold'}}>{title}</Text>
         </TouchableOpacity>

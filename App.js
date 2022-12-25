@@ -1,6 +1,7 @@
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View } from 'react-native';
 import Constants from 'expo-constants';
+import { NavigationContainer } from '@react-navigation/native';
 import AuthNav from './src/navigation/authNav'
 import { Provider } from 'react-redux';
 import store from './src/redux/store'
@@ -13,7 +14,9 @@ export default function App() {
     <View style={[styles.container, {paddingTop:barHeight}]}>
       <Provider store={store}>
         <StatusBar/>
-        <AuthNav />
+          <NavigationContainer>
+            <AuthNav />
+          </NavigationContainer>
       </Provider>
     </View>
   );

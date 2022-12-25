@@ -38,14 +38,12 @@ const RegDocsForm = () => {
 
                     <View style={styles.uploadTitle}>
                         <Text style={styles.title}>Profile image</Text>
-                        <Text style={styles.title}>CNIC image</Text>
                         <Text style={styles.title}>Driving License</Text>
                         <Text style={styles.title}>Car image</Text>
                         <Text style={styles.title}>Car registration</Text>
                     </View>
 
                     <View style={styles.uploadBtn}>
-                        <TouchableOpacity onPress={()=>{}}><Text style={[styles.title, {color:COLORS.blue}]}>Upload</Text></TouchableOpacity>
                         <TouchableOpacity onPress={()=>{}}><Text style={[styles.title, {color:COLORS.blue}]}>Upload</Text></TouchableOpacity>
                         <TouchableOpacity onPress={()=>{}}><Text style={[styles.title, {color:COLORS.blue}]}>Upload</Text></TouchableOpacity>
                         <TouchableOpacity onPress={()=>{}}><Text style={[styles.title, {color:COLORS.blue}]}>Upload</Text></TouchableOpacity>

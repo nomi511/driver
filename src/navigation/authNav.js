@@ -1,35 +1,41 @@
-import React, {useState} from 'react'
+import React, {useEffect} from 'react'
 import { View, StyleSheet } from 'react-native'
-import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
-import  {Auth, Login, Register, PreRegHome, RegDocsForm, ChangePassword} from '../screens'
+import  {Auth, Login, Register, EmailVerification, ChangePassword} from '../screens'
 import AppNav from './appNav'
 import { COLORS } from '../assets/styles/colors';
-
+import { tokenCheck } from '../redux/userSlice'
+import { useDispatch, useSelector } from 'react-redux'
  
-
+ 
 const Stack = createStackNavigator()
 
-const authNav = () => {
+const AuthNav = () => {
 
-    const [user, setUser] = useState(false)
+    const reduxData = useSelector(state=>state.user)
+    console.log('reduxd data: ', reduxData)
+    
+    const dispatch = useDispatch()
+
+    useEffect(() => {
+      dispatch(tokenCheck())
+    }, [])
+    
+
 
     return (
         <View style={styles.container}>
-            <NavigationContainer>
-                
-                <Stack.Navigator initialRouteName='Auth' screenOptions={{
-                    headerShown: false,
-                }}>
-                    <Stack.Screen name="Auth" component={Auth} />
-                    <Stack.Screen name="Login" component={Login} />
-                    <Stack.Screen name="Register" component={Register} />
-                    <Stack.Screen name="AppNav" component={AppNav} />
-                    <Stack.Screen name="Forgot Password" component={ChangePassword} options={{headerTitle:'Change Password'}}/>
-
+                <Stack.Navigator initialRouteName='Auth'>
+                    {reduxData.token?(<>
+                        <Stack.Screen name="AppNav" component={AppNav} />
+                    </>):(<>
+                        <Stack.Screen name="Auth" component={Auth} options={{ headerShown: false }} />
+                        <Stack.Screen name="Login" component={Login} options={{ headerShown: false }}/>
+                        <Stack.Screen name="Register" component={Register} options={{ headerShown: false }}/>
+                        <Stack.Screen name="Email Verification" component={EmailVerification} options={{ headerShown: false }}/>
+                        <Stack.Screen name="Forgot Password" component={ChangePassword} options={{headerTitle:'Change Password'}}/>
+                    </>)}
                 </Stack.Navigator>
-
-            </NavigationContainer>
         </View>
     )
 }
@@ -43,4 +49,4 @@ const styles= StyleSheet.create({
     }
 })
 
-export default authNav
+export default AuthNav

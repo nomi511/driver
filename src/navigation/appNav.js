@@ -5,7 +5,8 @@ import { StyleSheet } from "react-native";
 import HomeHeader from "../components/HomeHeader";
 import { useSelector } from "react-redux";
 import React from 'react'
-import { View, Text } from 'react-native'
+import { View } from 'react-native'
+import AuthNav from "./authNav";
  
 
 const Stack = createStackNavigator()
@@ -13,6 +14,7 @@ const Stack = createStackNavigator()
 const AppNav = () => {
 
     const user = useSelector(state=>state.user)
+    console.log('user: ', user)
 
     return (
         <View style={styles.container}>
@@ -20,7 +22,7 @@ const AppNav = () => {
             <Stack.Navigator initialRouteName={'Home'} >
 
                 {!user.verified? (<>
-                    <Stack.Screen name="PreRegHome" component={PreRegHome} options={{ headerShown: false }} />
+                    <Stack.Screen name="Welcome" component={PreRegHome} options={{ headerShown: false }} />
                     <Stack.Screen name="RegDocsForm" component={RegDocsForm} options={{headerTitle:'Details Form'}}/>
                 </>): (<>
                     <Stack.Screen 
@@ -37,9 +39,8 @@ const AppNav = () => {
                     <Stack.Screen name="Edit Profile" component={EditProfile}/>
                     <Stack.Screen name="Help" component={HelpForm}/>
                     <Stack.Screen name="New Password" component={NewPassword} options={{headerTitle:'New Password'}}/>
-                </>)
-                
-            }
+                </>)}
+                <Stack.Screen name="Auth Nav" component={AuthNav}/>
 
             </Stack.Navigator>
         </View>
